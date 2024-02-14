@@ -14,12 +14,33 @@ public class BallController : MonoBehaviour
     //vs  public int - integers vs floats.
     private float xDir;
     private float yDir;
+
+    public bool inPlay;
+    public Vector3 ballStartPos;
+
+
+
     
     // Start is called before the first frame update
     void Start()
     {
         //Debug.Log("Hello Werld");
+        Launch();
         
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        if (inPlay == false)
+        {
+            transform.position = ballStartPos;
+            Launch();
+        }
+    }
+
+    void Launch()
+    {
         Vector3 direction = new Vector3(0,0,0);
 
         xDir = Random.Range(0,2);
@@ -44,11 +65,21 @@ public class BallController : MonoBehaviour
 
         //Add force to start movement.
         rbBall.AddForce(direction * force);
+        inPlay = true;
     }
 
-    // Update is called once per frame
-    void Update()
+    //EVENTS UPON COLLISION
+
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        
+        //Debug.Log("object that collided with ball:" + collision.gameObject.name);
+        if (collision.gameObject.name == "Left Wall" || collision.gameObject.name == "Right Wall")        {
+            //Debug.Log("collided with Left/Right Wall");
+            rbBall.velocity = Vector3.zero;
+            inPlay = false;
+        }
     }
+
+
+
 }
