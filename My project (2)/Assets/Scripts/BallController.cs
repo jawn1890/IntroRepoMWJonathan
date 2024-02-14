@@ -73,7 +73,8 @@ public class BallController : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         //Debug.Log("object that collided with ball:" + collision.gameObject.name);
-        if (collision.gameObject.name == "Left Wall" || collision.gameObject.name == "Right Wall")        {
+        if (collision.gameObject.name == "Left Wall" || collision.gameObject.name == "Right Wall")
+         {
             //Debug.Log("collided with Left/Right Wall");
             rbBall.velocity = Vector3.zero;
             inPlay = false;
