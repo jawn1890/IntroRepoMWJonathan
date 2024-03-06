@@ -24,7 +24,17 @@ public class Snake : MonoBehaviour
     //Keep Track of Tail Elements
     List<Transform> tail = new List<Transform>();
     bool ate = false;
+
+    
+    //I initially declared a variable called crash to be checked if it was true or not and then
+    //I would have the game execute code to reset the snake and score to 0.
+    //However, upon further discussion, professor Smith mentioned that it might be more efficient
+    //to create a new function (perhaps called crashed) and just call it when a wall is collided with!
+    //bool crash = false;
     public GameObject tailPrefab;
+    public GameManager myManager;
+
+    public Vector3 snakeStartPos;
     
 
 
@@ -42,6 +52,12 @@ public class Snake : MonoBehaviour
     {
         //MoveSnake();
         ChangeDirection();
+
+        
+
+
+
+
     }
 
     void MoveSnake()
@@ -79,6 +95,27 @@ public class Snake : MonoBehaviour
         }
     }
 
+    void Crashed()
+    {
+            Debug.Log("function being called");       
+            transform.position = snakeStartPos; //Set snake position back to start
+            myManager.foodScore = 0; //reset foodscore to 0
+
+        //Attempting to reset snake position
+        // if (crash == true)
+        // {
+            
+        //     //crash = false; //set inPlay to true
+            
+
+        // }
+    }
+
+
+
+
+
+
     private void ChangeDirection()
     {
         if (Input.GetKey(KeyCode.LeftArrow))
@@ -111,14 +148,22 @@ public class Snake : MonoBehaviour
             //from wrapping around the edges to being ever so slightly away from all edges)
             //This way, when passing by the food, the collision event will not trigger. It will only trigger when the head goes fully over the food.
             //The scale of both HEAD and FOOD are the same, so slightly scaling down the box collider will not affect anything because everything IS and IS MOVING AT 1px x 1px.
+            myManager.FoodEaten();
+
+
         }
         else if (collision.gameObject.tag == "Wall")
         {
             //Do something!!
             //I'll need to create a startPos for the snake and then reset it when I hit the walls.
             //I already tagged each wall as "Wall" so just continue from there!
+            Debug.Log("collided!!!");
+            Crashed();
+
             
         }
     }
+
+
 
 }
