@@ -102,6 +102,9 @@ public class Snake : MonoBehaviour
             transform.position = snakeStartPos; //Set snake position back to start
             myManager.foodScore = 0; //reset foodscore to 0
 
+
+            //Tried this,  didnt work! vvv
+            //Destroy(tailSec);
             //Also didnt work!! vvv
             //DestroyImmediate(tailPrefab, true);
 
@@ -166,7 +169,7 @@ public class Snake : MonoBehaviour
             //Did not work!!!! vvv
             //tail.Count = 0;
 
-            Crashed();
+            Crashed(); //How do I get the whole tail/tail list to disappear or for a game over screen to appear?
 
             
         }
