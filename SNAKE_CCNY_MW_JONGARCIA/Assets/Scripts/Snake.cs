@@ -44,7 +44,7 @@ public class Snake : MonoBehaviour
     void Start()
     {
         //Changing the floats (like 0.1f) in this line of code will speed up the snake!
-        InvokeRepeating("MoveSnake", 0.1f, 0.1f);
+        InvokeRepeating("MoveSnake", 0.09f, 0.09f);
     }
 
     // Update is called once per frame
@@ -93,6 +93,7 @@ public class Snake : MonoBehaviour
             tail.RemoveAt(tail.Count - 1);
 
         }
+
     }
 
     void Crashed()
@@ -100,6 +101,9 @@ public class Snake : MonoBehaviour
             Debug.Log("function being called");       
             transform.position = snakeStartPos; //Set snake position back to start
             myManager.foodScore = 0; //reset foodscore to 0
+
+            //Also didnt work!! vvv
+            //DestroyImmediate(tailPrefab, true);
 
         //Attempting to reset snake position
         // if (crash == true)
@@ -158,6 +162,10 @@ public class Snake : MonoBehaviour
             //I'll need to create a startPos for the snake and then reset it when I hit the walls.
             //I already tagged each wall as "Wall" so just continue from there!
             Debug.Log("collided!!!");
+
+            //Did not work!!!! vvv
+            //tail.Count = 0;
+
             Crashed();
 
             
