@@ -101,6 +101,7 @@ public class Snake : MonoBehaviour
             Debug.Log("function being called");       
             transform.position = snakeStartPos; //Set snake position back to start
             myManager.foodScore = 0; //reset foodscore to 0
+            //myManager.ObstacleHit();
 
 
             //Tried this,  didnt work! vvv
@@ -161,6 +162,7 @@ public class Snake : MonoBehaviour
         }
         else if (collision.gameObject.tag == "Wall")
         {
+
             //Do something!!
             //I'll need to create a startPos for the snake and then reset it when I hit the walls.
             //I already tagged each wall as "Wall" so just continue from there!

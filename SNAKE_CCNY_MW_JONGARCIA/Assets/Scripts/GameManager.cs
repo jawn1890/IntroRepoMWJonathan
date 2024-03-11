@@ -25,4 +25,13 @@ public class GameManager : MonoBehaviour
     {
         foodScore++;
     }
+
+
+//Tried to create a new function to make the score change to game over.
+//Perhaps I should create a reset and paused state of the game that it reverts to before just starting over.
+//Perhaps that way I can have the GAME OVER screen be the final state and after pressing a button, start everything over.
+    // public void ObstacleHit()
+    // {
+    //     foodScoreText.text = "GAME OVER";
+    // }
 }
