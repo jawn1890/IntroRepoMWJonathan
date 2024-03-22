@@ -44,7 +44,7 @@ public class Snake : MonoBehaviour
     void Start()
     {
         //Changing the floats (like 0.1f) in this line of code will speed up the snake!
-        InvokeRepeating("MoveSnake", 0.09f, 0.09f);
+        InvokeRepeating("MoveSnake", 0.03f, 0.03f);
     }
 
     // Update is called once per frame
