@@ -9,7 +9,6 @@ public class FoodSpawn : MonoBehaviour
 
     //GLOBAL VARIABLEs
     public GameObject foodPrefab;
-    bool ate = false;
 
     //BORDER POSITIONS
     public Transform wallTop;
@@ -34,7 +33,7 @@ public class FoodSpawn : MonoBehaviour
         
     }
 
-    public void Spawn()
+    void Spawn()
     {
         //Debug.Log("Spawn Called!");
 
