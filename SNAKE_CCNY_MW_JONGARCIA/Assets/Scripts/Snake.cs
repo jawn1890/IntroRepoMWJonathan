@@ -157,6 +157,8 @@ public class Snake : MonoBehaviour
             //This way, when passing by the food, the collision event will not trigger. It will only trigger when the head goes fully over the food.
             //The scale of both HEAD and FOOD are the same, so slightly scaling down the box collider will not affect anything because everything IS and IS MOVING AT 1px x 1px.
             myManager.FoodEaten();
+            myManager.FoodSpawn();
+        
 
 
         }
@@ -170,7 +172,6 @@ public class Snake : MonoBehaviour
 
             //Did not work!!!! vvv
             //tail.Count = 0;
-
             Crashed(); //How do I get the whole tail/tail list to disappear or for a game over screen to appear?
 
             

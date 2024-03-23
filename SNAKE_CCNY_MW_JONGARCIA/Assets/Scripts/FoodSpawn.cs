@@ -9,6 +9,7 @@ public class FoodSpawn : MonoBehaviour
 
     //GLOBAL VARIABLEs
     public GameObject foodPrefab;
+    bool ate = false;
 
     //BORDER POSITIONS
     public Transform wallTop;
@@ -18,11 +19,13 @@ public class FoodSpawn : MonoBehaviour
 
 
 
+
     // Start is called before the first frame update
     void Start()
     {
-        //Invoke("Spawn", 4);
-        InvokeRepeating("Spawn", 3, 4);
+        Invoke("Spawn", 4);
+        //InvokeRepeating("Spawn", 3, 4);
+        
     }
 
     // Update is called once per frame
@@ -31,7 +34,7 @@ public class FoodSpawn : MonoBehaviour
         
     }
 
-    void Spawn()
+    public void Spawn()
     {
         //Debug.Log("Spawn Called!");
 
@@ -39,5 +42,7 @@ public class FoodSpawn : MonoBehaviour
         int yPos = (int)Random.Range(wallTop.position.y, wallBottom.position.y);
 
         Instantiate(foodPrefab, new Vector3(xPos, yPos, 0), Quaternion.identity);
+
+
     }
 }
