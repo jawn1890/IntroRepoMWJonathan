@@ -22,7 +22,7 @@ public class FoodSpawn : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Invoke("Spawn", 4);
+        InvokeRepeating("Spawn", 1, 1);
         //InvokeRepeating("Spawn", 3, 4);
         
     }

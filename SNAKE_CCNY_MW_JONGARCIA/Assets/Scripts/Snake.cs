@@ -25,6 +25,7 @@ public class Snake : MonoBehaviour
     List<Transform> tail = new List<Transform>();
     bool ate = false;
 
+
     
     //I initially declared a variable called crash to be checked if it was true or not and then
     //I would have the game execute code to reset the snake and score to 0.
@@ -32,7 +33,8 @@ public class Snake : MonoBehaviour
     //to create a new function (perhaps called crashed) and just call it when a wall is collided with!
     //bool crash = false;
     public GameObject tailPrefab;
-    public GameManager myManager;
+    public GameManager myManager;//References the GameManager script in the inspector.
+    //how do I do something like this with the spawn function? or how do you use a bool to solve this?
 
     public Vector3 snakeStartPos;
     
@@ -44,7 +46,7 @@ public class Snake : MonoBehaviour
     void Start()
     {
         //Changing the floats (like 0.1f) in this line of code will speed up the snake!
-        InvokeRepeating("MoveSnake", 0.03f, 0.03f);
+        InvokeRepeating("MoveSnake", 0.07f, 0.07f);
     }
 
     // Update is called once per frame
@@ -101,6 +103,14 @@ public class Snake : MonoBehaviour
             Debug.Log("function being called");       
             transform.position = snakeStartPos; //Set snake position back to start
             myManager.foodScore = 0; //reset foodscore to 0
+            
+            //Lunch attempt
+            //dir = Vector3.zero;
+            //Invoke("MoveSnake", 0.3f);
+
+
+            //Older attempts  below
+
             //myManager.ObstacleHit();
 
 
@@ -142,6 +152,33 @@ public class Snake : MonoBehaviour
         {
             dir = Vector3.down;
         }
+
+        //for these next lines (to try to speed up my snake) I probably need to store the velocity
+        //of the snake as an int (or float?) and then multiply that value by 2 rather than trying
+        //to multiply the shortcut by 2 (cuz it's like a command rather than a number?) but lets see!
+
+        //did not work!
+        if (Input.GetKey(KeyCode.LeftArrow) && myManager.foodScore = 10)
+        {
+            Debug.Log("Speeding up left");
+            //dir = Vector3.left * 2;
+        } 
+        else if (Input.GetKey(KeyCode.RightArrow) && myManager.foodScore == 10)
+        {
+            Debug.Log("Speeding up right");
+            //dir = Vector3.right * 2;
+        }
+        else if(Input.GetKey(KeyCode.UpArrow) && myManager.foodScore == 10)
+        {
+            Debug.Log("Speeding up up");
+            //dir = Vector3.up * 2;
+        }
+        else if (Input.GetKey(KeyCode.DownArrow) && myManager.foodScore == 10)
+        {
+            Debug.Log("Speeding up down");
+            //dir = Vector3.down * 2;
+        }
+
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -157,8 +194,9 @@ public class Snake : MonoBehaviour
             //This way, when passing by the food, the collision event will not trigger. It will only trigger when the head goes fully over the food.
             //The scale of both HEAD and FOOD are the same, so slightly scaling down the box collider will not affect anything because everything IS and IS MOVING AT 1px x 1px.
             myManager.FoodEaten();
-            //tried this vvvv but it didn't work!
-            //myManager.FoodSpawn();
+
+            //myManager.FoodSpawn(); tried these but they didn't work!
+            //Invoke("Spawn", 1);
         
 
 
