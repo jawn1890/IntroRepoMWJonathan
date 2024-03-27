@@ -36,7 +36,7 @@ public class Snake : MonoBehaviour
 
     public Vector3 snakeStartPos = Vector3.zero;
     public FoodSpawn foodSpawnScript;
-    float snakeSpeed = 0.03f;
+    public float snakeSpeed = 0.5f;
     //public bool speedBoost = false;
 
     
@@ -48,7 +48,7 @@ public class Snake : MonoBehaviour
     void Start()
     {
         //Changing the floats (like 0.1f) in this line of code will speed up the snake!
-        InvokeRepeating("MoveSnake", snakeSpeed, snakeSpeed);
+        InvokeRepeating("MoveSnake", 1.0f, snakeSpeed);
 
 
     }
@@ -207,7 +207,7 @@ public class Snake : MonoBehaviour
 
             //trying to make the snake speed up when it eats food
             //did not work, will try to set a global variable when this collision happens
-            snakeSpeed = snakeSpeed - 0.9f;
+            snakeSpeed = snakeSpeed - 0.5f;
             Debug.Log("current snakeSpeed is " + snakeSpeed);
 
             //myManager.FoodSpawn(); tried these but they didn't work!

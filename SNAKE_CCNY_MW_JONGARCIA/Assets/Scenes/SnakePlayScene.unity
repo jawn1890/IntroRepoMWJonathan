@@ -899,6 +899,7 @@ MonoBehaviour:
   myManager: {fileID: 700292430}
   snakeStartPos: {x: 0, y: 0, z: 0}
   foodSpawnScript: {fileID: 700292428}
+  snakeSpeed: 1
 --- !u!1 &1843178575
 GameObject:
   m_ObjectHideFlags: 0
