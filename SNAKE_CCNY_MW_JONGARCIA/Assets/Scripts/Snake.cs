@@ -34,11 +34,12 @@ public class Snake : MonoBehaviour
     public GameManager myManager;//References the GameManager script in the inspector.
     //how do I do something like this with the spawn function? or how do you use a bool to solve this?
 
-    public Vector3 snakeStartPos = Vector3.zero;
     public FoodSpawn foodSpawnScript;
     public float snakeSpeed01 = 0.03f;
     public float snakeSpeed02 = 0.03f;
     //public bool speedBoost = false;
+
+    public Vector3 snakeStartPos;
 
     
 
@@ -49,9 +50,8 @@ public class Snake : MonoBehaviour
     void Start()
     {
         //Changing the floats (like 0.1f) in this line of code will speed up the snake!
-        InvokeRepeating("MoveSnake", snakeSpeed01, snakeSpeed02);
-
-
+        InvokeRepeating("MoveSnake", 0.2f, 0.2f);
+        
     }
 
     // Update is called once per frame
@@ -60,13 +60,6 @@ public class Snake : MonoBehaviour
 
         //MoveSnake();
         ChangeDirection();
-
-        if (Input.GetKey(KeyCode.Space))
-        {
-            snakeSpeed01 = 1.0f;
-            snakeSpeed02 = 1.0f;
-        }
-        
 
     }
 
@@ -90,7 +83,8 @@ public class Snake : MonoBehaviour
 
             ate = false;
             //You only get a piece of tail when you eat a piece of food lollll
-        
+            
+
 
         }
 
@@ -111,17 +105,9 @@ public class Snake : MonoBehaviour
 
     void Crashed()
     {
-            //Debug.Log("function being called");       
-            transform.position = snakeStartPos;
+            Debug.Log("function being called");       
+            transform.position = snakeStartPos; //Set snake position back to start
             myManager.foodScore = 0; //reset foodscore to 0
-            
-            //Lunch attempt
-            //dir = Vector3.zero;
-            //Invoke("MoveSnake", 0.3f);
-
-
-            //Older attempts  below
-
             //myManager.ObstacleHit();
 
 
@@ -139,9 +125,6 @@ public class Snake : MonoBehaviour
 
         // }
     }
-
-
-
 
 
 
@@ -205,18 +188,9 @@ public class Snake : MonoBehaviour
             //This way, when passing by the food, the collision event will not trigger. It will only trigger when the head goes fully over the food.
             //The scale of both HEAD and FOOD are the same, so slightly scaling down the box collider will not affect anything because everything IS and IS MOVING AT 1px x 1px.
             myManager.FoodEaten();
-            foodSpawnScript.Spawn(); //spawns the food only after the previous piece is eaten- calls Spawn() from the FoodSpawn script!
-
-            //trying to make the snake speed up when it eats food
-            //did not work, will try to set a global variable when this collision happens
-            snakeSpeed02 -= 0.05f;
-            //snakeSpeed02 -= 0.05f;
-            Debug.Log("current snakeSpeed02 is " + snakeSpeed01);
-
-            //myManager.FoodSpawn(); tried these but they didn't work!
-            //Invoke("Spawn", 1);
-        
-
+            foodSpawnScript.Spawn();
+            
+            
 
         }
         else if (collision.gameObject.tag == "Wall")
