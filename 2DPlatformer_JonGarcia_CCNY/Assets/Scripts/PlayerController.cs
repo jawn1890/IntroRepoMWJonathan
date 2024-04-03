@@ -14,11 +14,19 @@ public class PlayerController : MonoBehaviour
     public float jumpForce = 300; //3rd variable, usually a bigger number for a force to occur, as opposed to changing a tiny number to move around./
     public bool isJumping = false; //4th variable, a bool, to see if we are jumping. setting it to false because we dont start the game jumping.
 
+    //player health
+    public int maxHealth = 20;
+    public int currentHealth;
+    public HealthBar healthBarScript;
+
+
+
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        currentHealth = maxHealth;
+        healthBarScript.SetMaxHealth(maxHealth);
     }
 
     // Update is called once per frame
@@ -68,8 +76,22 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.tag == "Surface") //remember, if checks always require double operands, eg. ==, &&, ||
         {
             isJumping = false;
+            //Debug.Log("Less OUCH");
         }
+        
+        if (collision.gameObject.tag == "Lava")
+        {
+            //Debug.Log("OUCH!!!!");
+            TakeDamage(2);
+        }
+
     }
 
-    
+    public void TakeDamage(int damage)
+    {
+        currentHealth -= damage;
+        healthBarScript.SetHealth(currentHealth);
+    }
+
+
 }
