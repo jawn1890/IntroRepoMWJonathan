@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 34975349}
   - component: {fileID: 34975348}
   m_Layer: 0
-  m_Name: Ground
+  m_Name: Ground 1
   m_TagString: Surface
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -247,11 +247,11 @@ Transform:
   m_GameObject: {fileID: 34975347}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.787253, y: -0.42352933, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: -3.62, z: 0}
+  m_LocalScale: {x: 18.012, y: 2.7625, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 194242028}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &194242025
 GameObject:
@@ -265,7 +265,7 @@ GameObject:
   - component: {fileID: 194242027}
   - component: {fileID: 194242026}
   m_Layer: 0
-  m_Name: Ground Pieces
+  m_Name: Ground 2
   m_TagString: Surface
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -380,9 +380,7 @@ Transform:
   m_LocalPosition: {x: 14.18, y: -2.45, z: 0}
   m_LocalScale: {x: 18.012, y: 2.7625, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 34975350}
-  - {fileID: 1998936992}
+  m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &322719066
@@ -1491,7 +1489,7 @@ GameObject:
   - component: {fileID: 1998936991}
   - component: {fileID: 1998936990}
   m_Layer: 0
-  m_Name: Ground 1
+  m_Name: Ground 3
   m_TagString: Surface
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1603,11 +1601,11 @@ Transform:
   m_GameObject: {fileID: 1998936989}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.76282483, y: -2.4615383, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 27.92, y: -9.25, z: 0}
+  m_LocalScale: {x: 18.012, y: 2.7625, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 194242028}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
@@ -1616,7 +1614,9 @@ SceneRoots:
   - {fileID: 519420032}
   - {fileID: 1371711488}
   - {fileID: 830716354}
+  - {fileID: 34975350}
   - {fileID: 194242028}
+  - {fileID: 1998936992}
   - {fileID: 322719069}
   - {fileID: 1791537892}
   - {fileID: 1384842255}
