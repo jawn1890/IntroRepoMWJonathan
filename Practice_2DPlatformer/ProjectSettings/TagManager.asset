@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Surface
+  - Spike
   layers:
   - Default
   - TransparentFX

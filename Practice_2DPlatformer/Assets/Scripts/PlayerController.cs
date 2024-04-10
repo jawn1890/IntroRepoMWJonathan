@@ -67,5 +67,10 @@ public class PlayerController : MonoBehaviour
         {
             isJumping = false;
         }
+
+        if (collision.gameObject.tag =="Spike")
+        {
+            Debug.Log("OUCH!!");
+        }
     }
 }
