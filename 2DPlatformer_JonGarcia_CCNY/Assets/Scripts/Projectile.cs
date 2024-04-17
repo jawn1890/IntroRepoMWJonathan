@@ -44,6 +44,12 @@ public class Projectile : MonoBehaviour
             Destroy(collision.gameObject); //this line of code is to destory the object that THIS object HITS.
         }
 
+        if (collision.gameObject.tag == "Enemy")
+        {
+            Debug.Log("projectile hit enemy!");
+            Destroy(collision.gameObject);
+        }
+
         Destroy(gameObject); //this line of code is outside the collision check for lava rocks so that this OBJECT gets destroyed when hitting ANYTHING.
     }
 }

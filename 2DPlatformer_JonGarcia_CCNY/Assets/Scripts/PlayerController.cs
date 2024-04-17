@@ -19,6 +19,11 @@ public class PlayerController : MonoBehaviour
     public int currentHealth;
     public HealthBar healthBarScript;
 
+    //sprite direction flipping variables
+    public bool flippedLeft; //keeps track of which way our sprite IS CURRENTLY facing.
+    public bool facingLeft; //keeps track of which way our sprite SHOULD BE facing.
+
+
 
 
 
@@ -45,12 +50,17 @@ public class PlayerController : MonoBehaviour
             if (Input.GetKey(KeyCode.A)) //Checking for A and D button presses using Debug Logs.
             {
                 //Debug.Log("A pressed");
-                newPos.x -= playerSpeed; //When A is pressed, newPos.x will subtract playerSpeed, decreasing the value of x, causing it to move to the left.
+               newPos.x -= playerSpeed; //When A is pressed, newPos.x will subtract playerSpeed, decreasing the value of x, causing it to move to the left.
+               facingLeft = true;
+               Flip(facingLeft);
+            
             }
             else if (Input.GetKey(KeyCode.D))
             {
                 //Debug.Log("D pressed");
                 newPos.x += playerSpeed; //When D is pressed, newPos.x will add playerSpeed, increasing the value of x, causing it to move to the right
+                facingLeft = false;
+                Flip(facingLeft);
             }
 
             transform.position = newPos; //We are then setting the transform.position equal to the newly updated newPos (based on the key pressed).
@@ -91,6 +101,24 @@ public class PlayerController : MonoBehaviour
     {
         currentHealth -= damage;
         healthBarScript.SetHealth(currentHealth);
+    }
+
+    void Flip(bool facingLeft) //"void" without a specific designation is by defauly private.
+    {
+        //Debug.Log("Flip() called. facingRight = " + facingRight);
+        if (facingLeft && !flippedLeft)
+        {
+            transform.Rotate(0, -180, 0);
+            flippedLeft = true;
+        }
+
+        if (!facingLeft && flippedLeft)
+        {
+            transform.Rotate(0, 180, 0);
+            flippedLeft = false;
+        }
+
+
     }
 
 
