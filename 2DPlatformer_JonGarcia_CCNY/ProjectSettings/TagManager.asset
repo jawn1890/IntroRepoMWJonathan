@@ -8,6 +8,7 @@ TagManager:
   - Obstacle
   - Lava
   - Enemy
+  - DeathFloor
   layers:
   - Default
   - TransparentFX

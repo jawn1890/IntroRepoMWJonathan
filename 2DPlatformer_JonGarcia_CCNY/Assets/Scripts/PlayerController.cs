@@ -23,7 +23,9 @@ public class PlayerController : MonoBehaviour
     public bool flippedLeft; //keeps track of which way our sprite IS CURRENTLY facing.
     public bool facingLeft; //keeps track of which way our sprite SHOULD BE facing.
 
-
+    //variable for determing whether the game is over or not and changing the scene to the end scene
+    public bool gameOver = false;
+    // public SceneChanger sceneChangeee;
 
 
 
@@ -81,7 +83,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D collision) //creating a new private void to detect collisions. not the only way to do this though.
+    public void OnCollisionEnter2D(Collision2D collision) //creating a new private void to detect collisions. not the only way to do this though.
     {
         if (collision.gameObject.tag == "Surface") //remember, if checks always require double operands, eg. ==, &&, ||
         {
@@ -95,6 +97,13 @@ public class PlayerController : MonoBehaviour
             TakeDamage(2);
         }
 
+        if (collision.gameObject.tag == "DeathFloor")
+        {
+            //Debug.Log("GameOver");
+            //sceneChangeee.EndSceneControls();
+            gameOver = true;
+        }
+
     }
 
     public void TakeDamage(int damage)
@@ -105,7 +114,7 @@ public class PlayerController : MonoBehaviour
 
     void Flip(bool facingLeft) //"void" without a specific designation is by defauly private.
     {
-        //Debug.Log("Flip() called. facingRight = " + facingRight);
+        //Debug.Log("Flip() called. facingLeft = " + facingLeft);
         if (facingLeft && !flippedLeft)
         {
             transform.Rotate(0, -180, 0);

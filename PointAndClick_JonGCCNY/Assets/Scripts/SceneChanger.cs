@@ -9,7 +9,7 @@ public class SceneChanger : MonoBehaviour
 // CCNY MW IN CLASS
 
 //GLOBAL VARIABLES
-public  int sceneNumber;
+public int sceneNumber;
     //0 = StartScene
     //1 = MainScene
     //2 = EndScene
