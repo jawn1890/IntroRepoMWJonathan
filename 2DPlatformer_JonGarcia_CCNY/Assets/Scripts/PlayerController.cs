@@ -27,6 +27,9 @@ public class PlayerController : MonoBehaviour
     public bool gameOver = false;
     // public SceneChanger sceneChangeee;
 
+    //sound effect stuff
+    public AudioSource lavaRockAudio;
+
 
 
     // Start is called before the first frame update
@@ -83,7 +86,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public void OnCollisionEnter2D(Collision2D collision) //creating a new private void to detect collisions. not the only way to do this though.
+    private void OnCollisionEnter2D(Collision2D collision) //creating a new private void to detect collisions. not the only way to do this though.
     {
         if (collision.gameObject.tag == "Surface") //remember, if checks always require double operands, eg. ==, &&, ||
         {
@@ -94,6 +97,7 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.tag == "Lava")
         {
             //Debug.Log("OUCH!!!!");
+            lavaRockAudio.Play(); //play lava audio
             TakeDamage(2);
         }
 
