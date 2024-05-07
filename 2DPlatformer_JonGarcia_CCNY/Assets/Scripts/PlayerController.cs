@@ -23,9 +23,6 @@ public class PlayerController : MonoBehaviour
     public bool flippedLeft; //keeps track of which way our sprite IS CURRENTLY facing.
     public bool facingLeft; //keeps track of which way our sprite SHOULD BE facing.
 
-    //variable for determing whether the game is over or not and changing the scene to the end scene
-    public bool gameOver = false;
-    // public SceneChanger sceneChangeee;
 
     //sound effect stuff
     public AudioSource lavaRockAudio;
@@ -99,13 +96,6 @@ public class PlayerController : MonoBehaviour
             //Debug.Log("OUCH!!!!");
             lavaRockAudio.Play(); //play lava audio
             TakeDamage(2);
-        }
-
-        if (collision.gameObject.tag == "DeathFloor")
-        {
-            //Debug.Log("GameOver");
-            //sceneChangeee.EndSceneControls();
-            gameOver = true;
         }
 
     }
