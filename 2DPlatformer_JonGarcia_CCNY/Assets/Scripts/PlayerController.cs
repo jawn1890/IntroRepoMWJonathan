@@ -10,8 +10,8 @@ public class PlayerController : MonoBehaviour
 
     //GLOBAL VARIABLES
     public Rigidbody2D playerBody; //1st variable, RigidBody2D and naming it playerBody.
-    public float playerSpeed = 0.05f; //2nd variable , float called playerSpeed and set to a very small float.
-    public float jumpForce = 300; //3rd variable, usually a bigger number for a force to occur, as opposed to changing a tiny number to move around./
+    public float playerSpeed = 0.5f; //2nd variable , float called playerSpeed and set to a very small float.
+    public float jumpForce = 600; //3rd variable, usually a bigger number for a force to occur, as opposed to changing a tiny number to move around./
     public bool isJumping = false; //4th variable, a bool, to see if we are jumping. setting it to false because we dont start the game jumping.
 
     //player health
