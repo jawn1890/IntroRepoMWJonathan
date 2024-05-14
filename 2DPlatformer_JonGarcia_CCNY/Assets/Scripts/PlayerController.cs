@@ -39,7 +39,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        MovePlayer(); //After creating our private void (MovePlayer), it needs to be called- here it will be called every frame inn Update.
+        MovePlayer(); //After creating our private void (MovePlayer), it needs to be called- here it will be called every frame in Update.
         Jump();
     }
 

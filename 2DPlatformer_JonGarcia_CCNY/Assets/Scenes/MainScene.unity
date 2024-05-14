@@ -575,7 +575,7 @@ AudioSource:
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
-  Mute: 0
+  Mute: 1
   Spatialize: 0
   SpatializePostEffects: 0
   Priority: 128
@@ -1122,7 +1122,6 @@ MonoBehaviour:
   healthBarScript: {fileID: 1485807184}
   flippedLeft: 0
   facingLeft: 0
-  gameOver: 0
   lavaRockAudio: {fileID: 322719070}
 --- !u!114 &830716356
 MonoBehaviour:
@@ -1376,9 +1375,10 @@ GameObject:
   - component: {fileID: 1038162550}
   - component: {fileID: 1038162549}
   - component: {fileID: 1038162548}
+  - component: {fileID: 1038162551}
   m_Layer: 0
-  m_Name: DeathFloor
-  m_TagString: DeathFloor
+  m_Name: Game Over
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1412,7 +1412,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -1495,6 +1495,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1038162551
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1038162547}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e64a944407cc44dd48b0a550cd81929d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneID: 2
 --- !u!1 &1110466133
 GameObject:
   m_ObjectHideFlags: 0
