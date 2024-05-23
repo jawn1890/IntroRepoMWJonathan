@@ -15,6 +15,12 @@ public class BasicEnemy : MonoBehaviour
     public float moveSpeed = 3; //set a speed for the enemies
     public int patrolDestination; 
 
+    //Changing the enemy sprite direction
+    public bool flippedLeft;
+    public bool facingLeft;
+    public bool flippedUp;
+    public bool facingUp;
+
 
 
 
@@ -45,23 +51,85 @@ public class BasicEnemy : MonoBehaviour
         if (patrolDestination == 0)
         {
             transform.position = Vector3.MoveTowards(transform.position, patrolPoints[0].position, moveSpeed * Time.deltaTime);
+            facingLeft = true;
+            Flip(facingLeft);
             
             if (Vector3.Distance(transform.position, patrolPoints[0].position) < 0.5)
             {
                 patrolDestination = 1;
             }
-        
         }
 
         if (patrolDestination == 1)
         {
             //Debug.Log("change direction");
             transform.position = Vector3.MoveTowards(transform.position, patrolPoints[1].position, moveSpeed * Time.deltaTime);
+            facingLeft = false;
+            Flip(facingLeft);
 
             if (Vector3.Distance(transform.position, patrolPoints[1].position) < 0.5)
             {
                 patrolDestination = 0;
             }
+        }
+
+        if (patrolDestination == 2)
+        {
+            transform.position = Vector3.MoveTowards(transform.position, patrolPoints[2].position, moveSpeed * Time.deltaTime);
+            facingUp = true;
+            Reverse(facingLeft);
+
+            if (Vector3.Distance(transform.position, patrolPoints[2].position) < 0.5)
+            {
+                patrolDestination = 3;
+            }
+        }
+
+        if (patrolDestination == 3)
+        {
+            transform.position = Vector3.MoveTowards(transform.position, patrolPoints[3].position, moveSpeed * Time.deltaTime);
+            facingUp = false;
+            Reverse(facingUp);
+
+            if (Vector3.Distance(transform.position, patrolPoints[3].position) < 0.5)
+            {
+                patrolDestination = 4;
+            }
+        }
+    }
+
+    void Flip(bool facingLeft)
+    {
+        if (facingLeft && !flippedLeft)
+        {
+            Debug.Log("enemy turned left");
+            transform.Rotate(-180, 0, 0);
+            flippedLeft = true;
+        }
+
+        if (!facingLeft && flippedLeft)
+        {
+            Debug.Log("enemy turned right");
+            transform.Rotate(180, 0, 0);
+            flippedLeft = false;
+        }
+
+    }
+
+    void Reverse(bool facingUp)
+    {
+        if (facingUp && !flippedUp)
+        {
+            Debug.Log("enemy moving up");
+            transform.Rotate(0, 180, 0);
+            flippedUp = true;
+        }
+
+        if (!facingUp && flippedUp)
+        {
+            Debug.Log("enemy moving down");
+            transform.Rotate(0, -180, 0);
+            flippedUp = false;
         }
     }
 

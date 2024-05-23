@@ -8,7 +8,7 @@ public class Projectile : MonoBehaviour
 
     //GLOBAL VARIABLES
     public Rigidbody2D projectileRb;
-    public float speed = 5;
+    public float speed = 500f;
 
     //Projectile Countdown Timer Stuff
     public float projectileLife = 2;

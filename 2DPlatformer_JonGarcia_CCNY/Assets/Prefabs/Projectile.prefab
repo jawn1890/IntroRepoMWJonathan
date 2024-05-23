@@ -162,7 +162,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectileRb: {fileID: 904480052225449460}
-  speed: 5
+  speed: 35
   projectileLife: 2
   projectileCount: 0
   playerControllerScript: {fileID: 0}

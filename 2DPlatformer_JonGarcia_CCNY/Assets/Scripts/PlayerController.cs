@@ -106,7 +106,7 @@ public class PlayerController : MonoBehaviour
         healthBarScript.SetHealth(currentHealth);
     }
 
-    void Flip(bool facingLeft) //"void" without a specific designation is by defauly private.
+    void Flip(bool facingLeft) //"void" without a specific designation is by default private.
     {
         //Debug.Log("Flip() called. facingLeft = " + facingLeft);
         if (facingLeft && !flippedLeft)
