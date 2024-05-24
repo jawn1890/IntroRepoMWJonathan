@@ -19,13 +19,13 @@ public class KeepMe : MonoBehaviour
     {
         if (instance == null)
         {
-            Debug.Log("Audio Manager Not Destroyed");
+            //Debug.Log("Audio Manager Not Destroyed");
             instance = gameObject;
             DontDestroyOnLoad(gameObject);
         }
         else
         {
-            Debug.Log("Extra Audio Manager Destroyed");
+            //Debug.Log("Extra Audio Manager Destroyed");
             Destroy(gameObject);
         }
     }

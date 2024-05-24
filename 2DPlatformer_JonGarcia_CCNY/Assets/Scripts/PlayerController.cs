@@ -88,14 +88,19 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.tag == "Surface") //remember, if checks always require double operands, eg. ==, &&, ||
         {
             isJumping = false;
-            //Debug.Log("Less OUCH");
         }
+
         
         if (collision.gameObject.tag == "Lava")
         {
-            //Debug.Log("OUCH!!!!");
             lavaRockAudio.Play(); //play lava audio
             TakeDamage(2);
+        }
+
+        if (collision.gameObject.tag == "Coin")
+        {
+            Debug.Log("We got a coin!");
+            Destroy(collision.gameObject);
         }
 
     }

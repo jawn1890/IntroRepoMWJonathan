@@ -24,7 +24,7 @@ public class FallOffPlatform : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            Debug.Log("Fell Off The Platform!");
+            //Debug.Log("Fell Off The Platform!");
             SceneManager.LoadScene(sceneID);
         }
 

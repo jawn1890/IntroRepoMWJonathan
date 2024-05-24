@@ -9,6 +9,7 @@ TagManager:
   - Lava
   - Enemy
   - DeathFloor
+  - Coin
   layers:
   - Default
   - TransparentFX
