@@ -8,11 +8,9 @@ public class FloatingPlatforms : MonoBehaviour
     //this code will be similar to the enemy movement stuff, except we're not checking for a collision or decreasing health
 
     //platform movement
-    public Transform[] levitatePoints; // a list called levitate points
-    //for the levitate points- could unique identifiers be used? eg. ascend/descend points? or would a numbered variable be more
-    //appropriate for using a list?
+    public Transform[] levitatePoints; // declaring a list called levitate points
     public float moveSpeed = 4; //setting a speed for the plaftorms
-    public int platformDestination;
+    public int platformDestination; // a variable that will tell the enemy which patrol point to move towards.
 
 
 
@@ -25,10 +23,10 @@ public class FloatingPlatforms : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        PlatformMovement();
+        PlatformMovement(); //here we are calling our platform moving script in update so that it's moving the platforms every frame throughout th entire game.
     }
 
-    private void PlatformMovement()
+    private void PlatformMovement() //the code for this is exactly the same as the Basic Enemy script, except this script will be attached to floating platforms.
     {
         if (platformDestination == 0)
         {

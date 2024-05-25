@@ -75,8 +75,8 @@ public class BasicEnemy : MonoBehaviour
         }
 
         // These next two if statements do the same exact thing as the previous patrol poinits code, except this allows the sprite to simply be flipped in the appropriate up and down directions.
-        //The only new code is the Reverse() function I made to hold the different values for flipping the sprites on their x axes instead of their y axes.
-        if (patrolDestination == 2)
+        //The only new code is the Reverse() function I made to hold the different values for flipping the sprites up and dow instead of left and right.
+        if (patrolDestination == 2) //if the patrol destination is 2, code will run...
         {
             transform.position = Vector3.MoveTowards(transform.position, patrolPoints[2].position, moveSpeed * Time.deltaTime);
             facingUp = true;
@@ -101,11 +101,11 @@ public class BasicEnemy : MonoBehaviour
         }
     }
 
-    void Flip(bool facingLeft)
+    void Flip(bool facingLeft) // the flipping left/right code that we did together in class...
     {
-        if (facingLeft && !flippedLeft)
+        if (facingLeft && !flippedLeft) // if the enemy is facing left but not flipped left, code will run...
         {
-            //Debug.Log("enemy turned left");
+            //Debug.Log("enemy turned left");   
             transform.Rotate(-180, 0, 0);
             flippedLeft = true;
         }
@@ -119,20 +119,20 @@ public class BasicEnemy : MonoBehaviour
 
     }
 
-    void Reverse(bool facingUp)
+    void Reverse(bool facingUp) // this is my modified Flip function.
     {
-        if (facingUp && !flippedUp)
+        if (facingUp && !flippedUp) // if facing up but not flipped up...
         {
-            //Debug.Log("enemy moving up");
-            transform.Rotate(0, 180, 0);
-            flippedUp = true;
+            //Debug.Log("enemy moving up"); debug to make sure the function is called when the if statement is true.
+            transform.Rotate(0, 180, 0); // same transform.Rotate as before, except I am rotating them on their y axes because they were already rotated before being duplicated.
+            flippedUp = true; // flipped up becomes true because we're flipped up.
         }
 
-        if (!facingUp && flippedUp)
+        if (!facingUp && flippedUp) // if not facing up and flipped up...
         {
-            //Debug.Log("enemy moving down");
-            transform.Rotate(0, -180, 0);
-            flippedUp = false;
+            //Debug.Log("enemy moving down"); debug to make sure the function is called whenn the paremeters are met.
+            transform.Rotate(0, -180, 0); // again, transforming it on the negative y axes to go in the other direction.
+            flippedUp = false; // flippedUp is false because nnow we're facing down.
         }
     }
 

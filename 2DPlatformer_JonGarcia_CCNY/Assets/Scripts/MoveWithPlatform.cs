@@ -5,8 +5,8 @@ using UnityEngine;
 public class MoveWithPlatform : MonoBehaviour
 {
     //GLOBAL VARIABLES
-    //public Vector3 velocity;
-    public bool onPlatform;
+    //this script will help the player stay on the moving platforms as opposed to the player staying still and the platform passing underneath them.
+    public bool onPlatform; //a bool to determine whether we're on the platform or not.
 
 
 
@@ -22,20 +22,20 @@ public class MoveWithPlatform : MonoBehaviour
         
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnCollisionEnter2D(Collision2D collision) //collision checks
     {
-        if (collision.gameObject.tag == "Player")
+        if (collision.gameObject.tag == "Player") //if the game object this script is attached to collides with the player (i.e. if the player jumps on the platform)
         {
-            onPlatform = true;
-            collision.collider.transform.SetParent(transform);
+            onPlatform = true; //the onPlatform bool is set to true because we are o the platform.
+            collision.collider.transform.SetParent(transform); //we are setting any moving platform as the parent of the player temporarily so that the player's coordinates are the same as the platform's.
         }
     }
 
-    private void OnCollisionExit2D(Collision2D collision)
+    private void OnCollisionExit2D(Collision2D collision) //checking for the end of the collision (i.e. if the player jumps off the platform, thus ending the collision)
     {
-        if (collision.gameObject.tag == "Player")
+        if (collision.gameObject.tag == "Player") //if the game object is the player
         {
-            collision.collider.transform.SetParent(null);
+            collision.collider.transform.SetParent(null); //remove the player as a child of the platform.
         }
     }
 }

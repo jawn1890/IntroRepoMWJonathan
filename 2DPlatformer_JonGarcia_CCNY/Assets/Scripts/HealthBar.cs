@@ -8,7 +8,7 @@ public class HealthBar : MonoBehaviour
     //IN CLASS CCNY MW
 
     //GLOBAL VARIABLE
-    public Slider slider;
+    public Slider slider; //creating a slider component to be edited i the inspector.
 
 
 
@@ -25,9 +25,9 @@ public class HealthBar : MonoBehaviour
         
     }
 
-    public void SetMaxHealth(int health) //setting max health
+    public void SetMaxHealth(int health) //setting max health, function takes an integer.
     {
-        slider.maxValue = health;
+        slider.maxValue = health; //setting the max value to be our starting health.
         slider.value = health;
     }
 
