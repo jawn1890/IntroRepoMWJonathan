@@ -18,8 +18,9 @@ public class PlayerController : MonoBehaviour
     
     //Player Stats
     public float Speed = 5;
-    public float JumpPower = 50;
-    public float Gravity = 3;
+    public float JumpPowerY = 15;
+    public float JumpPowerX = 7;
+    public float Gravity = 4;
     
     //State-Tracking Variables
     public bool OnGround = false;
@@ -59,33 +60,66 @@ public class PlayerController : MonoBehaviour
         }
         
         //Code for jumping
-        if (Input.GetKeyDown(KeyCode.Z) && CanJump())
+        if (Input.GetKeyDown(KeyCode.Z) && CanJump() && FacingLeft)
         {
-            vel.y = JumpPower;
-            PS.Emit(5);
-            AS.PlayOneShot(JumpSFX);
+            vel.y = JumpPowerY;
+            vel.x = -JumpPowerX;
+            OnGround = false;
+            //PS.Emit(5);
+            //AS.PlayOneShot(JumpSFX);
+        } else if (Input.GetKeyDown(KeyCode.Z) && CanJump() && !FacingLeft)
+        {
+            vel.y = JumpPowerY;
+            vel.x = JumpPowerX;
+            OnGround = false;
+            //PS.Emit(5);
+            //AS.PlayOneShot(JumpSFX);
         }
         
         RB.velocity = vel;
         SR.flipX = FacingLeft;
         
-        //Code for game over if falling off a platform
-            //However, I need the actual asset files and project settings
-        // if (transform.position.y > -20)
-        // {
-        //     SceneManager.LoadScene("You Lose");
-        // }
+        // //Code for game over if falling off a platform
+        //  if (transform.position.y > -20)
+        //  {
+        //      SceneManager.LoadScene("You Lose");
+        //  }
         
         
     }
+    
     //Public bool function for determining if player can jump
-    public bool CanJump()
+     public bool CanJump()
+     {
+         return OnGround;
+     }
+
+    private void OnCollisionEnter2D(Collision2D other)
     {
-        return OnGround;
+        //If I collide with something solid, mark me as being on the ground...
+        OnGround = true;
+        
+        //If I collide with an enemy...
+        EnemyScript es = other.gameObject.GetComponent<EnemyScript>();
+        if (es != null)
+        {
+            //Set me to stunned state
+            Stunned = 0.75f;
+            //Pick a direction to throw me in
+            Vector2 vel = new Vector2(5, 5);
+            //If the monster is to my right, throw me left
+            if (other.transform.position.x > transform.position.x)
+                vel.x *= -1;
+            //And toss me
+            RB.AddForce(vel, ForceMode2D.Impulse);
+        }
     }
-    
-    
-    
+
+    private void OnCollisionExit2D(Collision2D other)
+    {
+        //If I stop touching something solid, mark me as not being on the ground
+        OnGround = false;
+    }
     
     
 }
